@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <unistd.h> // For sleep function (works in seconds)
+
+bool emergencyDetected = false;
+
+// Function to simulate detecting an emergency vehicle
+void detectEmergency() {
+    emergencyDetected = true;
+    printf("Emergency vehicle detected! Turning light green immediately.\n");
+}
+
+// Function to simulate traffic light system
+void trafficLightSystem() {
+    while (1) { // Infinite loop for the simulation
+        if (emergencyDetected) {
+            // Green light for emergency vehicle
+            printf("Green light ON (Emergency vehicle passing).\n");
+            sleep(5); // Simulate green light duration
+            emergencyDetected = false; // Reset emergency detection
+        } else {
+            // Standard traffic light cycle
+            printf("Red light ON.\n");
+            sleep(5); // Simulate red light duration
+            printf("Green light ON.\n");
+            sleep(5); // Simulate green light duration
+            printf("Yellow light ON.\n");
+            sleep(2); // Simulate yellow light duration
+        }
+    }
+}
+
+int main() {
+    printf("Traffic light simulation started.\n");
+
+    // Simulating emergency detection in a separate thread or user action
+    sleep(8); // Wait 8 seconds before detecting an emergency vehicle
+    detectEmergency();
+
+    // Start the traffic light system
+    trafficLightSystem();
+
+    return 0;
+}

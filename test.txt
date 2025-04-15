@@ -1,2 +1,4 @@
 Amity university banglore
-AUB
+b tech cse
+b tech aiml
+b tech iot
